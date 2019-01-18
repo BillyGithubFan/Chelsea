@@ -22,6 +22,7 @@ public class ImageAndTextAdapter extends ArrayAdapter<String> {
                                String[] strings, TypedArray icons) {
         super(ctx, viewResourceId, strings);
 
+        //instantiate layout XML file into its corresponding view objects which can be used in java programs.
         mInflater = (LayoutInflater)ctx.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
 
@@ -46,9 +47,12 @@ public class ImageAndTextAdapter extends ArrayAdapter<String> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         convertView = mInflater.inflate(mViewResourceId, null);
+
+        //find the "imageView" in secondary_layout.xml, and then set the image icon
         ImageView iv = (ImageView)((View) convertView).findViewById(R.id.imageView);
         iv.setImageDrawable(mIcons.getDrawable(position));
 
+        //find the "textView" in secondary_layout.xml, and then set the text
         TextView tv = (TextView)convertView.findViewById(R.id.textView);
         tv.setText(mStrings[position]);
 
